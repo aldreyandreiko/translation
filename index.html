@@ -197,8 +197,7 @@
       <h1>Your Name</h1>
       <h2>Portuguese ↔ English Translator</h2>
       <p>
-        Short professional intro goes here. For example: <br>
-        "Specialized in literary and academic translation. Passionate about preserving tone, nuance, and cultural depth."
+        Specialized in literary and academic translation. Passionate about preserving tone, nuance, and cultural depth.
       </p>
       <div class="contact">
         <strong>Email:</strong> yourname@email.com
@@ -245,17 +244,33 @@
       const btnPT = document.getElementById('btnPT');
       const btnEN = document.getElementById('btnEN');
 
+      const sidebarIntro = document.querySelector('.sidebar p');
+
       if(lang === 'pt') {
         btnPT.classList.add('active');
         btnEN.classList.remove('active');
+
+        // Sidebar intro
+        sidebarIntro.textContent = "Especializada em tradução literária e acadêmica. Apaixonada por preservar tom, nuance e profundidade cultural.";
+
+        // Work Summary
         document.querySelector('#work h3').textContent = 'Resumo do Trabalho';
-        document.querySelector('#work p').textContent = 'Aqui você pode descrever sua experiência: clientes, áreas em que trabalhou, anos de prática e conquistas. Mantenha curto e profissional.';
+        document.querySelector('#work p').textContent = 'Aqui você pode descrever sua experiência: clientes, áreas em que trabalhou, anos em prática e conquistas. Mantenha curto e profissional.';
+
+        // Samples title
         document.querySelector('#samples h3').textContent = 'Amostras de Tradução';
       } else {
         btnEN.classList.add('active');
         btnPT.classList.remove('active');
+
+        // Sidebar intro
+        sidebarIntro.textContent = 'Specialized in literary and academic translation. Passionate about preserving tone, nuance, and cultural depth.';
+
+        // Work Summary
         document.querySelector('#work h3').textContent = 'Work Summary';
         document.querySelector('#work p').textContent = 'Here you can describe your experience: clients, fields you’ve worked in, years of practice, and achievements. Keep it short and professional.';
+
+        // Samples title
         document.querySelector('#samples h3').textContent = 'Translation Samples';
       }
     }
