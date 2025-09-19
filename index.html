@@ -194,7 +194,7 @@
       </div>
 
       <img src="your-photo.jpg" alt="Profile Photo">
-      <h1>Your Name</h1>
+      <h1 id="sidebar-name">Your Name</h1>
       <h2 id="sidebar-subtitle">Portuguese ↔ English Translator</h2>
       <p id="sidebar-intro">
         Specialized in literary and academic translation. Passionate about preserving tone, nuance, and cultural depth.
@@ -236,8 +236,12 @@
     function openTab(tabId) {
       document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
       document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-      document.getElementById(tabId === 'work' ? 'tabWork' : 'tabSamples').classList.add('active');
+      document.getElementById('tab' + capitalize(tabId)).classList.add('active');
       document.getElementById(tabId).classList.add('active');
+    }
+
+    function capitalize(str) {
+      return str.charAt(0).toUpperCase() + str.slice(1);
     }
 
     function switchLanguage(lang) {
