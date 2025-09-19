@@ -195,7 +195,7 @@
 
       <img src="your-photo.jpg" alt="Profile Photo">
       <h1>Your Name</h1>
-      <h2>Portuguese ↔ English Translator</h2>
+      <h2 id="sidebar-subtitle">Portuguese ↔ English Translator</h2>
       <p id="sidebar-intro">
         Specialized in literary and academic translation. Passionate about preserving tone, nuance, and cultural depth.
       </p>
@@ -209,20 +209,20 @@
     <!-- Main Content -->
     <div class="main">
       <div class="tabs">
-        <div class="tab active" onclick="openTab('work')">Work Summary</div>
-        <div class="tab" onclick="openTab('samples')">Translation Samples</div>
+        <div class="tab active" id="tabWork" onclick="openTab('work')">Work Summary</div>
+        <div class="tab" id="tabSamples" onclick="openTab('samples')">Translation Samples</div>
       </div>
 
       <div id="work" class="tab-content active">
-        <h3>Work Summary</h3>
-        <p>
+        <h3 id="work-title">Work Summary</h3>
+        <p id="work-text">
           Here you can describe your experience: clients, fields you’ve worked in, years of practice,
           and achievements. Keep it short and professional.
         </p>
       </div>
 
       <div id="samples" class="tab-content">
-        <h3>Translation Samples</h3>
+        <h3 id="samples-title">Translation Samples</h3>
         <div class="samples">
           <a href="sample1.html" target="_blank">Sample 1 – Literary</a>
           <a href="sample2.html" target="_blank">Sample 2 – Academic</a>
@@ -236,41 +236,44 @@
     function openTab(tabId) {
       document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
       document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-      document.querySelector(`[onclick="openTab('${tabId}')"]`).classList.add('active');
+      document.getElementById(tabId === 'work' ? 'tabWork' : 'tabSamples').classList.add('active');
       document.getElementById(tabId).classList.add('active');
     }
 
     function switchLanguage(lang) {
       const btnPT = document.getElementById('btnPT');
       const btnEN = document.getElementById('btnEN');
+
       const sidebarIntro = document.getElementById('sidebar-intro');
+      const sidebarSubtitle = document.getElementById('sidebar-subtitle');
+      const workTitle = document.getElementById('work-title');
+      const workText = document.getElementById('work-text');
+      const samplesTitle = document.getElementById('samples-title');
+      const tabWork = document.getElementById('tabWork');
+      const tabSamples = document.getElementById('tabSamples');
 
       if(lang === 'pt') {
         btnPT.classList.add('active');
         btnEN.classList.remove('active');
 
-        // Sidebar intro
         sidebarIntro.textContent = "Especializada em tradução literária e acadêmica. Apaixonada por preservar tom, nuance e profundidade cultural.";
-
-        // Work Summary
-        document.querySelector('#work h3').textContent = 'Resumo do Trabalho';
-        document.querySelector('#work p').textContent = 'Aqui você pode descrever sua experiência: clientes, áreas em que trabalhou, anos em prática e conquistas. Mantenha curto e profissional.';
-
-        // Samples title
-        document.querySelector('#samples h3').textContent = 'Amostras de Tradução';
+        sidebarSubtitle.textContent = "Tradutora Português ↔ Inglês";
+        workTitle.textContent = "Resumo do Trabalho";
+        workText.textContent = "Aqui você pode descrever sua experiência: clientes, áreas em que trabalhou, anos em prática e conquistas. Mantenha curto e profissional.";
+        samplesTitle.textContent = "Amostras de Tradução";
+        tabWork.textContent = "Resumo do Trabalho";
+        tabSamples.textContent = "Amostras de Tradução";
       } else {
         btnEN.classList.add('active');
         btnPT.classList.remove('active');
 
-        // Sidebar intro
-        sidebarIntro.textContent = 'Specialized in literary and academic translation. Passionate about preserving tone, nuance, and cultural depth.';
-
-        // Work Summary
-        document.querySelector('#work h3').textContent = 'Work Summary';
-        document.querySelector('#work p').textContent = 'Here you can describe your experience: clients, fields you’ve worked in, years of practice, and achievements. Keep it short and professional.';
-
-        // Samples title
-        document.querySelector('#samples h3').textContent = 'Translation Samples';
+        sidebarIntro.textContent = "Specialized in literary and academic translation. Passionate about preserving tone, nuance, and cultural depth.";
+        sidebarSubtitle.textContent = "Portuguese ↔ English Translator";
+        workTitle.textContent = "Work Summary";
+        workText.textContent = "Here you can describe your experience: clients, fields you’ve worked in, years of practice, and achievements. Keep it short and professional.";
+        samplesTitle.textContent = "Translation Samples";
+        tabWork.textContent = "Work Summary";
+        tabSamples.textContent = "Translation Samples";
       }
     }
   </script>
