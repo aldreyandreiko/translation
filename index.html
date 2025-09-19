@@ -13,46 +13,23 @@
       color: #333;
     }
 
-    /* Language buttons on top */
-    .lang-buttons {
-      display: flex;
-      justify-content: center;
-      margin: 20px 0;
-      flex-wrap: wrap;
-    }
-
-    .lang-buttons button {
-      margin: 3px;
-      padding: 6px 12px;
-      font-size: 0.9em;
-      cursor: pointer;
-      background-color: #e0f7f7;
-      border: 1px solid #00a6a6;
-      border-radius: 5px;
-      transition: 0.3s;
-    }
-
-    .lang-buttons button.active,
-    .lang-buttons button:hover {
-      background-color: #00a6a6;
-      color: #fff;
-    }
-
     .container {
       display: flex;
       max-width: 1000px;
-      margin: 0 auto 40px auto;
+      margin: 40px auto;
       box-shadow: 0 0 20px rgba(0,0,0,0.1);
       border-radius: 10px;
       overflow: hidden;
     }
 
+    /* Sidebar */
     .sidebar {
       width: 30%;
       background: #e0f7f7;
       padding: 30px 20px;
       box-sizing: border-box;
       text-align: center;
+      position: relative; /* for floating buttons */
     }
 
     .sidebar img {
@@ -91,6 +68,34 @@
       margin: 5px 0 2px;
     }
 
+    /* Floating language buttons in sidebar */
+    .lang-buttons-sidebar {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 5px;
+      z-index: 2;
+    }
+
+    .lang-buttons-sidebar button {
+      padding: 4px 10px;
+      font-size: 0.85em;
+      cursor: pointer;
+      background-color: #e0f7f7;
+      border: 1px solid #00a6a6;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    .lang-buttons-sidebar button.active,
+    .lang-buttons-sidebar button:hover {
+      background-color: #00a6a6;
+      color: #fff;
+    }
+
+    /* Main content */
     .main {
       width: 70%;
       background: #fff;
@@ -98,7 +103,6 @@
       box-sizing: border-box;
     }
 
-    /* Tabs */
     .tabs {
       display: flex;
       border-bottom: 2px solid #ddd;
@@ -139,9 +143,7 @@
       text-decoration: underline;
     }
 
-    /* ===================== */
     /* MOBILE RESPONSIVENESS */
-    /* ===================== */
     @media screen and (max-width: 600px) {
       .container {
         flex-direction: column;
@@ -160,42 +162,23 @@
       }
 
       .tabs {
-        display: flex;
-        justify-content: flex-start;
         flex-wrap: nowrap;
         gap: 10px;
-        margin-bottom: 15px;
-      }
-
-      .tab-content#work {
-        order: 1;
-      }
-
-      .tab-content#samples {
-        order: 2;
-      }
-
-      .lang-buttons {
-        flex-wrap: wrap;
-      }
-
-      .lang-buttons button {
-        padding: 6px 10px;
-        font-size: 0.9em;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Language buttons above everything -->
-  <div class="lang-buttons">
-    <button id="btnPT" class="active" onclick="switchLanguage('pt')">PT</button>
-    <button id="btnEN" onclick="switchLanguage('en')">EN</button>
-  </div>
 
   <div class="container">
     <!-- Sidebar -->
     <div class="sidebar">
+      <!-- Floating language buttons -->
+      <div class="lang-buttons-sidebar">
+        <button id="btnPT" class="active" onclick="switchLanguage('pt')">PT</button>
+        <button id="btnEN" onclick="switchLanguage('en')">EN</button>
+      </div>
+
       <img src="your-photo.jpg" alt="Profile Photo">
       <h1>Your Name</h1>
       <h2>Portuguese ↔ English Translator</h2>
@@ -240,7 +223,6 @@
     function openTab(tabId) {
       document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
       document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-
       document.querySelector(`[onclick="openTab('${tabId}')"]`).classList.add('active');
       document.getElementById(tabId).classList.add('active');
     }
@@ -264,5 +246,6 @@
       }
     }
   </script>
+
 </body>
 </html>
