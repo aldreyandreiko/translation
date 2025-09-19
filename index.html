@@ -18,18 +18,21 @@
       max-width: 1000px;
       margin: 40px auto;
       box-shadow: 0 0 20px rgba(0,0,0,0.1);
-      border-radius: 10px;
+      border-radius: 12px;
       overflow: hidden;
     }
 
     /* Sidebar */
     .sidebar {
       width: 30%;
-      background: #e0f7f7;
+      background: linear-gradient(rgba(224,247,247,0.9), rgba(224,247,247,0.9)),
+                  url('sidebar-texture.png') repeat;
+      background-size: cover;
       padding: 30px 20px;
       box-sizing: border-box;
       text-align: center;
-      position: relative; /* for floating buttons */
+      position: relative;
+      border-radius: 12px 0 0 12px;
     }
 
     .sidebar img {
@@ -38,6 +41,7 @@
       border-radius: 50%;
       object-fit: cover;
       margin-bottom: 15px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 
     .sidebar h1 {
@@ -80,12 +84,12 @@
     }
 
     .lang-buttons-sidebar button {
-      padding: 4px 10px;
+      padding: 5px 12px;
       font-size: 0.85em;
       cursor: pointer;
-      background-color: #e0f7f7;
-      border: 1px solid #00a6a6;
-      border-radius: 5px;
+      background-color: #cdeaea; 
+      border: 1px solid #a1d2d2;
+      border-radius: 8px;
       transition: 0.3s;
     }
 
@@ -93,6 +97,7 @@
     .lang-buttons-sidebar button:hover {
       background-color: #00a6a6;
       color: #fff;
+      border-color: #007878;
     }
 
     /* Main content */
@@ -101,6 +106,8 @@
       background: #fff;
       padding: 30px;
       box-sizing: border-box;
+      border-radius: 0 12px 12px 0;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
     }
 
     .tabs {
@@ -115,16 +122,22 @@
       cursor: pointer;
       border-bottom: 3px solid transparent;
       transition: 0.3s;
+      border-radius: 8px 8px 0 0;
     }
 
     .tab.active {
       border-color: #00a6a6;
       font-weight: bold;
       color: #00a6a6;
+      background-color: #f0fdfd;
     }
 
     .tab-content {
       display: none;
+      background-color: #fefefe;
+      padding: 15px 20px;
+      border-radius: 0 0 12px 12px;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.03);
     }
 
     .tab-content.active {
@@ -137,6 +150,7 @@
       color: #00a6a6;
       text-decoration: none;
       font-weight: bold;
+      transition: 0.2s;
     }
 
     .samples a:hover {
