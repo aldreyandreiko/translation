@@ -13,10 +13,35 @@
       color: #333;
     }
 
+    /* Language buttons on top */
+    .lang-buttons {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+
+    .lang-buttons button {
+      margin: 3px;
+      padding: 6px 12px;
+      font-size: 0.9em;
+      cursor: pointer;
+      background-color: #e0f7f7;
+      border: 1px solid #00a6a6;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    .lang-buttons button.active,
+    .lang-buttons button:hover {
+      background-color: #00a6a6;
+      color: #fff;
+    }
+
     .container {
       display: flex;
       max-width: 1000px;
-      margin: 40px auto;
+      margin: 0 auto 40px auto;
       box-shadow: 0 0 20px rgba(0,0,0,0.1);
       border-radius: 10px;
       overflow: hidden;
@@ -73,29 +98,6 @@
       box-sizing: border-box;
     }
 
-    /* Language buttons */
-    .lang-buttons {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 15px;
-    }
-
-    .lang-buttons button {
-      margin: 3px;
-      padding: 6px 12px;
-      font-size: 0.9em;
-      cursor: pointer;
-      background-color: #e0f7f7;
-      border: 1px solid #00a6a6;
-      border-radius: 5px;
-      transition: 0.3s;
-    }
-
-    .lang-buttons button.active, .lang-buttons button:hover {
-      background-color: #00a6a6;
-      color: #fff;
-    }
-
     /* Tabs */
     .tabs {
       display: flex;
@@ -143,7 +145,7 @@
     @media screen and (max-width: 600px) {
       .container {
         flex-direction: column;
-        margin: 20px;
+        margin: 0 20px 20px 20px;
       }
 
       .sidebar, .main {
@@ -157,7 +159,6 @@
         margin-bottom: 10px;
       }
 
-      /* Keep tab buttons side by side */
       .tabs {
         display: flex;
         justify-content: flex-start;
@@ -166,7 +167,6 @@
         margin-bottom: 15px;
       }
 
-      /* Work Summary above Translation Samples */
       .tab-content#work {
         order: 1;
       }
@@ -175,7 +175,6 @@
         order: 2;
       }
 
-      /* Language buttons */
       .lang-buttons {
         flex-wrap: wrap;
       }
@@ -188,6 +187,12 @@
   </style>
 </head>
 <body>
+  <!-- Language buttons above everything -->
+  <div class="lang-buttons">
+    <button id="btnPT" class="active" onclick="switchLanguage('pt')">PT</button>
+    <button id="btnEN" onclick="switchLanguage('en')">EN</button>
+  </div>
+
   <div class="container">
     <!-- Sidebar -->
     <div class="sidebar">
@@ -207,20 +212,11 @@
 
     <!-- Main Content -->
     <div class="main">
-
-      <!-- Language buttons -->
-      <div class="lang-buttons">
-        <button id="btnPT" class="active" onclick="switchLanguage('pt')">PT</button>
-        <button id="btnEN" onclick="switchLanguage('en')">EN</button>
-      </div>
-
-      <!-- Tabs -->
       <div class="tabs">
         <div class="tab active" onclick="openTab('work')">Work Summary</div>
         <div class="tab" onclick="openTab('samples')">Translation Samples</div>
       </div>
 
-      <!-- Tab contents -->
       <div id="work" class="tab-content active">
         <h3>Work Summary</h3>
         <p>
