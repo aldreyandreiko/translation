@@ -25,9 +25,10 @@
     /* Sidebar */
     .sidebar {
       width: 30%;
-      background: linear-gradient(rgba(224,247,247,0.9), rgba(224,247,247,0.9)),
-                  url('sidebar-texture.png') repeat;
+      background: url('sidebar-texture.png') repeat; /* texture image */
       background-size: cover;
+      background-color: rgba(224,247,247,0.85); /* light teal overlay */
+      background-blend-mode: lighten; /* blend color and texture */
       padding: 30px 20px;
       box-sizing: border-box;
       text-align: center;
@@ -81,6 +82,7 @@
       display: flex;
       gap: 5px;
       z-index: 2;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
     .lang-buttons-sidebar button {
