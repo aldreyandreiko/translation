@@ -196,7 +196,7 @@
       <img src="your-photo.jpg" alt="Profile Photo">
       <h1>Your Name</h1>
       <h2>Portuguese ↔ English Translator</h2>
-      <p>
+      <p id="sidebar-intro">
         Specialized in literary and academic translation. Passionate about preserving tone, nuance, and cultural depth.
       </p>
       <div class="contact">
@@ -243,8 +243,7 @@
     function switchLanguage(lang) {
       const btnPT = document.getElementById('btnPT');
       const btnEN = document.getElementById('btnEN');
-
-      const sidebarIntro = document.querySelector('.sidebar p');
+      const sidebarIntro = document.getElementById('sidebar-intro');
 
       if(lang === 'pt') {
         btnPT.classList.add('active');
